@@ -1,17 +1,44 @@
 import React from 'react';
-import AddTodo from "./containers/AddTodo"
-import VisibleTodoList from "./containers/VisibleTodoList"
-import logo from './logo.svg';
+import { connect } from 'react-redux'
 import './App.css';
+import DisplayTodos from './components/Todo'
+import { Add_Todo } from './actions'
 
-function App() {
-  return (
-    <div className="App">
-        <AddTodo />
-        <VisibleTodoList />
+class App extends React.Component{
+  constructor(){
+    super()
+    this.state = {
+      input:""
+    }
+  }
+  handleChange =({target})=>{
+    this.setState({
+      input:target.value
+    })
+  }
 
-    </div>
-  );
+  handleSubmit =()=>{
+    this.props.dispatch(Add_Todo(this.state.input))
+    this.setState({
+      input:''
+    })
+  }
+
+  render(){
+    return(
+      <div>
+        <h1>Redux Todos</h1>
+        <div>
+          <input type="text" value={this.state.input} placeholder="what needs to be done" onChange={this.handleChange}/>
+          <button onClick={this.handleSubmit}>Add Todo</button>
+        </div>
+        < DisplayTodos />
+      </div>
+    )
+  }
 }
 
-export default App;
+function passStateAsProps(state){
+  return state
+}
+export default connect(passStateAsProps)(App);

@@ -1,19 +1,27 @@
-let todoId = 0 ;
-export const addTodo = (text)=>{
+
+export const Add_Todo = (payload)=>{
+    console.log('action')
     return({
         type:'Add-Todo',
-        id:todoId++,
-        text
+        payload
     })
 }
+export const Delete_Todo = (payload)=>{
+  return({
+      type:'Delete-Todo',
+      payload
+  })
+}
+export const Toggle_Todo = (payload)=>{
+  return({
+      type:'Toggle-Todo',
+      payload
+  })
+}
+export const Change_Tab = (payload)=>{
+  return({
+      type:'Change-Tab',
+      payload
+  })
+}
 
-export const VisibilityFilters = {
-    SHOW_ALL: 'SHOW_ALL',
-    SHOW_COMPLETED: 'SHOW_COMPLETED',
-    SHOW_ACTIVE: 'SHOW_ACTIVE'
-  };
-
-export const setVisibilityFilter = filter => ({
-    type: 'SET_VISIBILITY_FILTER',
-    filter
-  });
