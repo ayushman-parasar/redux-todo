@@ -6,7 +6,9 @@ import { store } from './store'
 import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux'
 
-
+store.subscribe(() => {
+  localStorage.setItem("myTodos", JSON.stringify(store.getState()));
+});
 
 
 ReactDOM.render(
