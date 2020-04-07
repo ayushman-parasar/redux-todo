@@ -45,9 +45,9 @@ class App extends React.Component{
             <button 
             className={this.props.currentTab === "active" ? "active" : ""}
             onClick={()=>this.handleStatus('active')}>Active</button>
-            <button 
+            {/* <button 
             className={this.props.currentTab === "clear" ? "active" : ""}
-            onClick={()=>this.handleStatus('clear_completed')}>Clear Completed</button>
+            onClick={()=>this.handleStatus('clear_completed')}>Clear Completed</button> */}
           </div>
       </div>
     )
@@ -55,6 +55,6 @@ class App extends React.Component{
 }
 
 function passStateAsProps(state){
-  return { allTodos: state.allTodos }
+  return state
 }
 export default connect(passStateAsProps)(App);

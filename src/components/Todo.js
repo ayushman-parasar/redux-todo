@@ -16,7 +16,7 @@ const DisplayTodos =(props)=>{
         <>
             <ul>
                 {
-                    props.allTodos && props.allTodos.map(todo=>{
+                   props.allTodos.map(todo=>{
                         return(
                             <li style={{display:'flex',alignItems:'center'}} key={todo.id}>
                                 <input type="checkbox" onChange={() => toggle(todo.id)} checked={todo.isDone}/>
@@ -34,6 +34,7 @@ const DisplayTodos =(props)=>{
 }
 
 function passStateToProps({ allTodos, currentTab }) {
+  console.log(allTodos)
     function filterTodo(todos, tab) {
       switch (tab) {
         case "all":
